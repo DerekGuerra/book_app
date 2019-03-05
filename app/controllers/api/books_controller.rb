@@ -31,4 +31,13 @@ class Api::BooksController < ApplicationController
     render 'show.json.jbuilder'
     @book.save
   end
+
+  def destroy
+    #find book
+    the_id = params[:id]
+    @book = Book.find_by(id: the_id)
+    #destroy book
+    @book.destroy
+    render 'destroy.json.jbuilder'
+  end
 end
